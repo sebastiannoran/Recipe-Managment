@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'RecipeInventory',
-    tableName: `recipe_inventory`,
+    tableName: `RecipeInventories`,
     underscored: true
   });
   return RecipeInventory;

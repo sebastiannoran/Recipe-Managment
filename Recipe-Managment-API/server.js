@@ -27,6 +27,23 @@ app.get('/RecipeInventory', async (req, res) => {
     }
 })
 
+app.get('/recipes/:id', async (req, res) => {
+    const recipeId = parseInt(req.params.id, 10);
+  
+    try {
+      const recipe = await RecipeInventory.findByPk(recipeId);
+  
+      if (recipe) {
+        res.status(200).json(recipe);
+      } else {
+        res.status(404).send({ message: 'Recipe not found' });
+      }
+    } catch (err) {
+      console.error(err);
+      res.status(500).send({ message: err.message });
+    }
+  });
+
 app.patch('/RecipeInventory/:id', async (req, res) => {
     const recipeId = parseInt(req.params.id, 10);
   
